@@ -44,6 +44,8 @@ The first step I am doing in this new project is to test some typical example ma
 The new mainboard design I will also start early on in the project because I want to be able to crosscheck the connectivity in practical form with the actual PCBs.
 Initially it will be mostly placement changes and looking at the 3D representations but later I will also start to do the PCB routing.
 
+[First rough draft of the mainboard, remaining components will be added after these are defined.](https://github.com/rodneyknaap/atx-486at-mainboard/blob/main/486%20AT%20PC%20ATX%20mainboard%20draft%20001.jpg)
+
 I have cleared up the ATX mainboard PCB and moved the keyboard controller, UART and RTC in with the rest of the AT I/O devices in one quarter of the PCB.
 I will generate the clocks for these in that same quadrant, and use a custom connector for providing the chip select control signals from a decoder solution.
 Roughly half of the ATX surface area is now available for the high speed 32 bit section of the system. This will consist of the CPU, the FPGA based system controller, RAM solution in FPGA, and possibly a form of VGA card solution with 32 bit data width. I will feature shadow RAM which will include the VGA BIOS ROM program.
