@@ -44,4 +44,11 @@ The first step I am doing in this new project is to test some typical example ma
 The new mainboard design I will also start early on in the project because I want to be able to crosscheck the connectivity in practical form with the actual PCBs.
 Initially it will be mostly placement changes and looking at the 3D representations but later I will also start to do the PCB routing.
 
+I have cleared up the ATX mainboard PCB and moved the keyboard controller, UART and RTC in with the rest of the AT I/O devices in one quarter of the PCB.
+I will generate the clocks for these in that same quadrant, and use a custom connector for providing the chip select control signals from a decoder solution.
+Roughly half of the ATX surface area is now available for the high speed 32 bit section of the system. This will consist of the CPU, the FPGA based system controller, RAM solution in FPGA, and possibly a form of VGA card solution with 32 bit data width. I will feature shadow RAM which will include the VGA BIOS ROM program.
+
+Next part is the X-BUS module, this will contain a CPLD for providing all the decoding and control logic for DMA and other X-BUS devices. And of course the core chips like DMA controllers, IRQ controllers, system timer, and possibly the page register chip, though I may redefine this in the FPGA right away. The X-BUS card will also contain a LPT port which has the advantage of being able to use a slot bracket to mount the PCB in the system.
+I will assemble the placement of the X-BUS PCB and upload a PCB photo as soon as this is finished. When I am further in the FPGA development, I will look at possibly replacing the X-BUS PCB with FPGA programming. Though this would be a huge effort and will require more advanced VHDL work. If anyone reads this and would be able to participate in this project to help replacing the DMA controllers, IRQ controllers and system timer chip with FPGA programming, feel free to get in touch. I am doing a lot of design work, so any help from an experienced FPGA developer would be appreciated.
+
 Last updated oktober 20th, 2024.
