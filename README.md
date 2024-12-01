@@ -56,6 +56,6 @@ The X-BUS module will be a card in an ISA slot connector, it will contain a CPLD
 
 ![First rough draft of the X-BUS module containing the DMA controllers, interrupt processors, system timer and decoding CPLD.](486AT_PC_X-BUS_MODULE_draft_001.jpg)
 
-At the moment while the design is still in a somewhat fluid stage, I am only drafting placement layouts of the various PCBs. As soon as I have a clear outline of what goes into all the system modules, I will finish designing all the concept layouts and send them to the PCB factory.
+At the moment while the design is still in a somewhat fluid stage, I am only drafting placement layouts of the various PCBs. As soon as I have a clear outline of what goes into which of the system modules, I will finish designing all the concept layouts and send them to the PCB factory.
 
 Last updated december 1st, 2024.
