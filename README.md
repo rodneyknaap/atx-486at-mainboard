@@ -83,7 +83,7 @@ I have created this final CPLD stage for several reasons:
 - I want to test with memory directly connected to the CPU databus and develop the control logic for this configuration
 - I want to see how the design using larger chip packages on an ATX board works out so I can get a better impression of what and how much will be able to fit on a full ATX board size and how to realize the design
 
-I hope I will be successful to debug and test this final CPLD stage, which potentially can provide a lot of useful and important experiences which I can then take into the FPGA stage project. 
+I hope I will be successful to debug and test this final CPLD stage, which potentially can provide a lot of useful and important experience which I can then take into this FPGA stage project. 
 
 During my work on the CPLD project, I have also prepared and designed a first concept of a fully integrated single chip FPGA quartus project which contains an entire PC/AT design including the entire bus structure and I was able to compile it successfully using certain FPGA devices, which is good news.
 
