@@ -72,4 +72,25 @@ I have seen PCI solutions using a 486 CPU so I will at some time in the future l
 ## Continued development inside this project and into the next stage
 As with the 286 project, this project is also aimed at the largest possible range of continued development of the system using this second design stage. This time, even more so than before. I will want to do a lot of experimentation with PC technology which would normally not be possible with traditional mainboards from the 90s. I will want to go a few steps beyond and enable more functionality to the system. Basically I will keep going until I reach the outer limitations of this hardware, after which I will continue to the third hardware design stage. The experiences I have gained from my work on this stage, as with the 286 project, I will re-invest into the next stage, which will probably have a completely different structure depending on my findings. At some point I hope that I could develop everything into a single mainboard PCB, that is, if the ATX PCB space could allow for this.
 
-Last updated december 1st, 2024.
+## Current work on integrated PC/AT system development  
+In parallel to my work for developing this FPGA based PC/AT system project, I am currently also working on a final stage 286 mainboard which is still based on CPLDs. This project can be found in my other repository where you can read the progress.  
+I have created this final CPLD stage for several reasons:  
+- I want to conclude the first revision CPLD stage project into an end point developed PCB design which includes all the improvements developed up to now because there are many design changes however I want to skip redesigning a project with the current state of design, and go directly to the third revision design which is intended as the final CPLD based project.
+- I want to gain more experience with bus integration and transceiver reduction using programmable logic
+- I want to see if the 286 CPU is able to operate at faster clock speeds when having an integrated bus structure
+- I want to test with integrated bus logic and quiet bus structure to see how this impacts IDE ports and overall system bus noise
+- I want to test with using an 8 bit mode ROM for the BIOS
+- I want to test with memory directly connected to the CPU databus and develop the control logic for this configuration
+
+I hope I will be successful to debug and test this final CPLD stage, which potentially can provide a lot of useful and important experiences which I can then take into the FPGA stage project. 
+
+During my work on the CPLD project, I have also prepared and designed a first concept of a fully integrated single chip FPGA quartus project which contains an entire PC/AT design including the entire bus structure and I was able to compile it successfully using certain FPGA devices, which is good news.
+
+So I have the first quartus basis ready to develop further in this FPGA project as soon as I have been able to do more testing in the CPLD stage.
+If I can be successful to reach a working final CPLD stage, this will verify a lot of additional design updates to the PC/AT system which could facilitate a higher level of integration that will benefit this FPGA design as well. Depending on the CPLD stage REV3D results I will continue this project with the new quartus design to continue from that concept.
+
+Kind regards,
+
+Rodney
+
+Last updated august 11th, 2025.
