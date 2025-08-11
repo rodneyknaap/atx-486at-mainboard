@@ -87,7 +87,10 @@ I hope I will be successful to debug and test this final CPLD stage, which poten
 During my work on the CPLD project, I have also prepared and designed a first concept of a fully integrated single chip FPGA quartus project which contains an entire PC/AT design including the entire bus structure and I was able to compile it successfully using certain FPGA devices, which is good news.
 
 So I have the first quartus basis ready to develop further in this FPGA project as soon as I have been able to do more testing in the CPLD stage.
-If I can be successful to reach a working final CPLD stage, this will verify a lot of additional design updates to the PC/AT system which could facilitate a higher level of integration that will benefit this FPGA design as well. Depending on the CPLD stage REV3D results I will continue this project with the new quartus design to continue from that concept.
+If I can be successful to reach a working final CPLD stage, this will verify a lot of additional design updates to the PC/AT system which could facilitate a higher level of integration that will benefit this FPGA design as well. Depending on the CPLD stage REV3D results I will continue this project with the new quartus design to continue from that concept. 
+
+I will go over all the designs for this FPGA project a few more times and probably I will make some design updates.
+As soon as I have these made, I will publish them here.
 
 Kind regards,
 
