@@ -81,6 +81,7 @@ I have created this final CPLD stage for several reasons:
 - I want to test with integrated bus logic and quiet bus structure to see how this impacts IDE ports and overall system bus noise
 - I want to test with using an 8 bit mode ROM for the BIOS
 - I want to test with memory directly connected to the CPU databus and develop the control logic for this configuration
+- I want to see how the design using larger chip packages on an ATX board works out so I can get a better impression of what and how much will be able to fit on a full ATX board size and how to realize the design
 
 I hope I will be successful to debug and test this final CPLD stage, which potentially can provide a lot of useful and important experiences which I can then take into the FPGA stage project. 
 
@@ -89,8 +90,8 @@ During my work on the CPLD project, I have also prepared and designed a first co
 So I have the first quartus basis ready to develop further in this FPGA project as soon as I have been able to do more testing in the CPLD stage.
 If I can be successful to reach a working final CPLD stage, this will verify a lot of additional design updates to the PC/AT system which could facilitate a higher level of integration that will benefit this FPGA design as well. Depending on the CPLD stage REV3D results I will continue this project with the new quartus design to continue from that concept. 
 
-I will go over all the designs for this FPGA project a few more times and probably I will make some design updates.
-As soon as I have these made, I will publish them here.
+I will go over all the designs for this FPGA project a few more times and I will be making some further design updates which will be published here.
+It looks like 6 layer boards are getting more popular with JLCPCB so I hope that in the future they would be able to make a mainboard using 6 layers for a reasonable and affordable price. If this is the case, possibly I could consider soldering the FPGA(s) directly to the mainboard.
 
 Kind regards,
 
