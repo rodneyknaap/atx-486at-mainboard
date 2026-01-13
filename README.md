@@ -47,16 +47,9 @@ Initially it will be mostly placement changes and looking at the 3D representati
 
 ![First rough draft of the mainboard, remaining components will be added after these are defined.](486AT_PC_ATX_mainboard_draft_001.jpg)
 
-I have cleared up the ATX mainboard PCB and moved the keyboard controller, UART and RTC in with the rest of the AT I/O devices in one quarter of the PCB.
-I will generate the clocks for these in that same quadrant, and use a custom connector for providing the chip select control signals from a decoder solution.
-Roughly half of the ATX surface area is now available for the high speed 32 bit section of the system. This will consist of the CPU, the FPGA based system controller, RAM solution in FPGA, and possibly a form of VGA card solution with 32 bit data width. I will feature shadow RAM which will include the VGA BIOS ROM program.
-
-## X-BUS Module
-The X-BUS module will be a card in an ISA slot connector, it will contain a CPLD for providing all the decoding, DMA arbitration and control. And of course the core AT system chips like the DMA controllers, IRQ controllers and system timer. The X-BUS card will also contain a LPT port which has the advantage of reducing mainboard PCB space and being able to use a slot bracket to mount the PCB in the system. When I am further along in the FPGA development, I will look at replacing the entire X-BUS PCB with FPGA programming, though this is going to constitute a huge amount of work. The advantage of doing this development work is of course that testing and debugging can be done in any simpler system like an XT or the 5170 mainboard. Other X-BUS devices, the keyboard controller and RTC, are moved into the 16 bit quadrant of the mainboard PCB and interfaced to the S-BUS. The DMA page register is also moved from the X-BUS to the S-BUS however it will live on as an integrated solution inside the FPGA.
-
-![First rough draft of the X-BUS module containing the DMA controllers, interrupt processors, system timer and decoding CPLD.](486AT_PC_X-BUS_MODULE_draft_001.jpg)
-
-At the moment while the design is still in a somewhat fluid stage, I am only drafting placement layouts of the various PCBs. As soon as I have a clear outline of what goes into which of the system modules, I will finish designing all the concept layouts and send them to the PCB factory.
+I will be updating the rough draft PCB layout for this project. This mainboard will be modified to not contain any more separate core AT controller ICs. The IDE port will also be fully integrated into the FPGA as well.
+As things are looking now (jan 2026) we will probably feature an external FDC controller in PLCC form which contains the full FDC logic contrary to the DIP IC. 
+The project will include options for USB mouse and USB keyboard, and PS/2 keyboard/mouse as an option. I will attempt to add all possible types of keyboard and mouse connections so all of these can be used according to preference.
 
 ## Memory subsystem and FPGA integration
 A FPGA will be used to create all the system control for the 286 and 486 CPUs. Part of the tasks of the FPGA will be, as I have mentioned a few times in the VCF thread, to transparently provide a modern and fast type of DRAM to the system. Basically the FPGA will be in charge of doing all the memory control, and will aim to provide the RAM memory to the system at the highest possible speeds. I talked with newold86 on the VCF thread and he mentioned how he soldered a FPGA directly onto his own PCB. It's looking like I will need to do some BGA soldering as well because the available FPGA modules on the market are simply too severely limited in terms of available pins for the very advanced level of integration needed for this project. I will need a few hundred pins probably, so I will need a really modern type of FPGA and make use of level shifting transceivers to interface the low voltage FPGA to the system and CPU. Since the FPGA will go between the CPU and RAM, it will also open up all sorts of EMS type paging memory solutions which will also be available to a 286 CPU. This opens up the possibility of running [RealDoom](https://github.com/sqpat/RealDOOM) on this design, which is one of my goals that I am looking forward to working on. Basically I intend to feature EMS as done by VLSI in their TOPCAT chipset as an option in this project when using the 286. Of course, this is a more advanced goal which I will work on when I am further along in the testing and debugging phase of the project.
@@ -68,33 +61,37 @@ The CPU System Control module will contain: a 286 CPU socket, a 486 CPU socket, 
 
 ## PCI
 I have seen PCI solutions using a 486 CPU so I will at some time in the future look into featuring functional PCI slot connectors as well. For me, the most important consideration regarding any part of the development remains that no chipset will be used anywhere, only a completely open, fully known concept solution will be developed. For this purpose I will continue to study all the various design specifications involved to gain the complete insight into the 486 CPU and PCI technology. I will also route any remaining available FPGA pins from the CPU System Control module into the mainboard connectors, allowing new designs, system upgrades and other new expansions to be interfaced on another card in the system. 
+I have also started to study the PCI standard and technology to attempt to use this with the 286 CPU, where I also plan to work on PCI for the 486 CPU in this project as well. We can use the ISA bus for initial debugging providing VGA display through an ISA slot card, and then move on to create the PCI bus in the FPGA. I will feature one or two PCI slots in the 286 mainboard, and the same will be done for this 486 project.
 
 ## Continued development inside this project and into the next stage
 As with the 286 project, this project is also aimed at the largest possible range of continued development of the system using this second design stage. This time, even more so than before. I will want to do a lot of experimentation with PC technology which would normally not be possible with traditional mainboards from the 90s. I will want to go a few steps beyond and enable more functionality to the system. Basically I will keep going until I reach the outer limitations of this hardware, after which I will continue to the third hardware design stage. The experiences I have gained from my work on this stage, as with the 286 project, I will re-invest into the next stage, which will probably have a completely different structure depending on my findings. At some point I hope that I could develop everything into a single mainboard PCB, that is, if the ATX PCB space could allow for this.
 
-## Current work on integrated PC/AT system development  
-In parallel to my work for developing this FPGA based PC/AT system project, I am currently also working on a final stage 286 mainboard which is still based on CPLDs. This project can be found in my other repository where you can read the progress.  
-I have created this final CPLD stage for several reasons:  
-- I want to conclude the first revision CPLD stage project into an end point developed PCB design which includes all the improvements developed up to now because there are many design changes however I want to skip redesigning a project with the current state of design, and go directly to the third revision design which is intended as the final CPLD based project.
-- I want to gain more experience with bus integration and transceiver reduction using programmable logic
-- I want to see if the 286 CPU is able to operate at faster clock speeds when having an integrated bus structure
-- I want to test with integrated bus logic and quiet bus structure to see how this impacts IDE ports and overall system bus noise
-- I want to test with using an 8 bit mode ROM for the BIOS
-- I want to test with memory directly connected to the CPU databus and develop the control logic for this configuration
-- I want to see how the design using larger chip packages on an ATX board works out so I can get a better impression of what and how much will be able to fit on a full ATX board size and how to realize the design
+## Update for followers of this project  
+The REV3D CPLD project has been completed where we now have a fully integrated PC/AT design using a 286 CPU and 5 CPLDs which has been completely debugged.
+Work on the REV3D will receive further updates if and when enhancements are being discovered during the work on the next stage FPGA based systems.
+The REV3D 286 project is important for the future work on this 486 system which is going to be based on FPGA.
+After completing the REV3D 286 system we now have a basis to proceed into FPGA technology where we will take the integration level further by integrating the core AT controller ICs into the FPGA.  
 
-I hope I will be successful to debug and test this final CPLD stage, which potentially can provide a lot of useful and important experience which I can then take into this FPGA stage project. 
+I have started work on the next stage FPGA system which I am going to base solely on the 286 CPU.  
+The 286 is going to help us get started with FPGA technology and HDL designs.
+It will be based on hybrid design to attempt to preserve the PC/AT structure in the quartus block design structure.
+This will need to be slightly modified to achieve a compatible state for quartus compilation and programming an FPGA.
+The major change being that we will remove the X-BUS from the PC/AT system since the DMA is getting completely integrated into all the other areas of the system.
+Another reason for not creating an X-bus anymore is that we will do complete integration where most of the system is no longer employing tri stating to share a common bus.
+So bus members will be joined by multiplexing logic instead.  
 
-During my work on the CPLD project, I have also prepared and designed a first concept of a fully integrated single chip FPGA quartus project which contains an entire PC/AT design including the entire bus structure and I was able to compile it successfully using certain FPGA devices, which is good news.
+After the FPGA stage is developed and debugged, it will then be suitable to serve for the first design steps using the 486 CPU.
+In the 486 stage it is the plan that all the core AT controllers will be integrated inside the FPGA to allow the system to be more compact and run at higher clock speeds matching the 486.  
 
-So I have the first quartus basis ready to develop further in this FPGA project as soon as I have been able to do more testing in the CPLD stage.
-If I can be successful to reach a working final CPLD stage, this will verify a lot of additional design updates to the PC/AT system which could facilitate a higher level of integration that will benefit this FPGA design as well. Depending on the CPLD stage REV3D results I will continue this project with the new quartus design to continue from that concept. 
+So the way things are planned right now is that after debugging the 286 FPGA stage (REV4) we will not be using an X-device card after all.
+So the 286 FPGA project will also serve to prepare that important development step and have the integrated core AT controllers available for this 486 project next.  
 
-I will go over all the designs for this FPGA project a few more times and I will be making some further design updates which will be published here.
-It looks like 6 layer boards are getting more popular with JLCPCB so I hope that in the future they would be able to make a mainboard using 6 layers for a reasonable and affordable price. If this is the case, possibly I could consider soldering the FPGA(s) directly to the mainboard.
+If you are interested in the 486 project please star this repo to show your interest and support, and I suggest you also can follow the work being done on creating and debugging the REV4 286 system because that will in part define this 486 project as well. I will devote the effort into that first and then follow up here to redefine the outline of this project as a result from that work.  
+
+Thank you to everyone who expressed an interest by starring this project, it is much appreciated!
 
 Kind regards,
 
 Rodney
 
-Last updated august 11th, 2025.
+Last updated january 13th, 2026.
